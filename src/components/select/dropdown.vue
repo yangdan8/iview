@@ -50,28 +50,26 @@
                         this.popperStatus = true;
                     });
                 } else {
-                    this.$nextTick(() => {
-                        this.$parent.$nextTick(() => {
-                            this.popper = new Popper(this.$parent.$refs.reference, this.$el, {
-                                placement: this.placement,
-                                modifiers: {
-                                    computeStyle:{
-                                        gpuAcceleration: false
-                                    },
-                                    preventOverflow :{
-                                        boundariesElement: 'window'
-                                    }
+                    setTimeout(()=>{
+                        this.popper = new Popper(this.$parent.$refs.reference, this.$el, {
+                            placement: this.placement,
+                            modifiers: {
+                                computeStyle:{
+                                    gpuAcceleration: false
                                 },
-                                onCreate:()=>{
-                                    this.resetTransformOrigin();
-                                    this.$nextTick(this.popper.update());
-                                },
-                                onUpdate:()=>{
-                                    this.resetTransformOrigin();
+                                preventOverflow :{
+                                    boundariesElement: 'window'
                                 }
-                            });
+                            },
+                            onCreate:()=>{
+                                this.resetTransformOrigin();
+                                this.$nextTick(this.popper.update());
+                            },
+                            onUpdate:()=>{
+                                this.resetTransformOrigin();
+                            }
                         });
-                    });
+                    },0);
                 }
                 // set a height for parent is Modal and Select's width is 100%
                 if (this.$parent.$options.name === 'iSelect') {
