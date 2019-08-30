@@ -51,23 +51,25 @@
                     });
                 } else {
                     this.$nextTick(() => {
-                        this.popper = new Popper(this.$parent.$refs.reference, this.$el, {
-                            placement: this.placement,
-                            modifiers: {
-                                computeStyle:{
-                                    gpuAcceleration: false
+                        this.$parent.$nextTick(() => {
+                            this.popper = new Popper(this.$parent.$refs.reference, this.$el, {
+                                placement: this.placement,
+                                modifiers: {
+                                    computeStyle:{
+                                        gpuAcceleration: false
+                                    },
+                                    preventOverflow :{
+                                        boundariesElement: 'window'
+                                    }
                                 },
-                                preventOverflow :{
-                                    boundariesElement: 'window'
+                                onCreate:()=>{
+                                    this.resetTransformOrigin();
+                                    this.$nextTick(this.popper.update());
+                                },
+                                onUpdate:()=>{
+                                    this.resetTransformOrigin();
                                 }
-                            },
-                            onCreate:()=>{
-                                this.resetTransformOrigin();
-                                this.$nextTick(this.popper.update());
-                            },
-                            onUpdate:()=>{
-                                this.resetTransformOrigin();
-                            }
+                            });
                         });
                     });
                 }
