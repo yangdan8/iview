@@ -1,6 +1,6 @@
 {
     "name": "iview",
-    "version": "3.4.3-pi.2",
+    "version": "3.4.3-pi.3",
     "publishConfig": {
         "registry": "http://192.168.13.111:8081/repository/pilot-hosted/"
     },
