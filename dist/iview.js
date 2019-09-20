@@ -28819,7 +28819,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '3.5.1-pi.2',
+    version: '3.5.2-pi.1',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
