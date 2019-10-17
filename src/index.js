@@ -59,7 +59,7 @@ import Upload from './components/upload';
 import {Row, Col} from './components/grid';
 import {Select, Option, OptionGroup} from './components/select';
 import locale from './locale/index';
-import csv from './utils/csv.js';
+import csv from './utils/csv';
 import exportCsv from './components/table/export-csv';
 
 const components = {
