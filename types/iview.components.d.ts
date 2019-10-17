@@ -76,12 +76,12 @@ export const exportCsv: {
   _getDownloadUrl(text: string): string;
   download: (filename: string, text: string) => string;
 };
-export type csv = (
+export function csv(
   columns: Array<string | { key: string; title?: string }>,
   datas: Array<any[] | object>[],
   options: object,
   noHeader?: boolean,
-) => string;
+): string;
 
 interface IViewGlobalOptions {
   size?: string;
