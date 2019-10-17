@@ -19,7 +19,7 @@ export { Cascader } from './cascader';
 export { Cell, CellGroup } from './cell';
 export { Checkbox, CheckboxGroup } from './checkbox';
 export { Circle, Circle as ICircle } from './circle';
-export { Collapse, CollapsePanel } from './collapse';
+export { Collapse, Panel } from './collapse';
 export { ColorPicker } from './color-picker';
 export { Content } from './content';
 export { DatePicker, DatePickerOptions } from './date-picker';
