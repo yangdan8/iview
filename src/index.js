@@ -59,6 +59,8 @@ import Upload from './components/upload';
 import {Row, Col} from './components/grid';
 import {Select, Option, OptionGroup} from './components/select';
 import locale from './locale/index';
+import csv from './utils/csv.js';
+import exportCsv from './components/table/export-csv';
 
 const components = {
     Affix,
@@ -158,7 +160,7 @@ const iview = {
     iSelect: Select,
     iSwitch: Switch,
     iTable: Table,
-    iTime: Time
+    iTime: Time,
 };
 
 const install = function(Vue, opts = {}) {
@@ -245,6 +247,8 @@ const API = {
     install,
     Circle,
     Switch,
+    csv,
+    exportCsv,
     ...components
 };
 
