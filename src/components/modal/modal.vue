@@ -119,6 +119,10 @@
                 type: Boolean,
                 default: true
             },
+            maskForce: {
+                type: Boolean,
+                default: false
+            },
             draggable: {
                 type: Boolean,
                 default: false
@@ -234,6 +238,9 @@
                 }
             },
             showMask () {
+                if(this.maskForce){
+                    return true;
+                }
                 return this.draggable ? false : this.mask;
             }
         },
