@@ -154,6 +154,7 @@ declare const API: {
 
 export default API;
 
+import * as m from 'vue';
 declare module 'vue/types/vue' {
   interface Vue {
     $IVIEW: IViewGlobalOptions;

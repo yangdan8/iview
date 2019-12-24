@@ -40,6 +40,7 @@ export declare class SpinInstance {
   hide:()=>void;
 }
 
+import * as m from 'vue';
 declare module 'vue/types/vue' {
   interface Vue {
     /**
