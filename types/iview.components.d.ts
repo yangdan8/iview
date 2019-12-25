@@ -74,7 +74,7 @@ export const exportCsv: {
   _isIE11(): boolean;
   _isEdge(): boolean;
   _getDownloadUrl(text: string): string;
-  download: (filename: string, text: string) => string;
+  download: (filename: string, text: string, dataType: string) => string;
 };
 export function csv(
   columns: Array<string | { key: string; title?: string }>,
