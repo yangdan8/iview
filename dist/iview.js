@@ -25676,16 +25676,18 @@ var csv = {
         );
     },
     _getDownloadUrl: function _getDownloadUrl(text) {
-        var BOM = '\uFEFF';
+        var dataType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '\uFEFF';
 
         if (window.Blob && window.URL && window.URL.createObjectURL) {
-            var csvData = new Blob([BOM + text], { type: 'text/csv' });
+            var csvData = new Blob([dataType + text], { type: 'text/csv' });
             return URL.createObjectURL(csvData);
         } else {
-            return 'data:attachment/csv;charset=utf-8,' + BOM + encodeURIComponent(text);
+            return 'data:attachment/csv;charset=utf-8,' + dataType + encodeURIComponent(text);
         }
     },
     download: function download(filename, text) {
+        var dataType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '\uFEFF';
+
         if (has('ie') && has('ie') < 10) {
             var oWin = window.top.open('about:blank', '_blank');
             oWin.document.charset = 'utf-8';
@@ -25694,13 +25696,12 @@ var csv = {
             oWin.document.execCommand('SaveAs', filename);
             oWin.close();
         } else if (has('ie') === 10 || this._isIE11() || this._isEdge()) {
-            var BOM = '\uFEFF';
-            var csvData = new Blob([BOM + text], { type: 'text/csv' });
+            var csvData = new Blob([dataType + text], { type: 'text/csv' });
             navigator.msSaveBlob(csvData, filename);
         } else {
             var link = document.createElement('a');
             link.download = filename;
-            link.href = this._getDownloadUrl(text);
+            link.href = this._getDownloadUrl(text, dataType);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -29036,7 +29037,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '3.5.2-pi.12',
+    version: '3.5.2-pi.13',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,

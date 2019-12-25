@@ -38,18 +38,19 @@ const csv = {
         return /Edge/.test(navigator.userAgent);
     },
 
-    _getDownloadUrl (text) {
-        const BOM = '\uFEFF';
-        // Add BOM to text for open in excel correctly
+    _getDownloadUrl (text, dataType = '\uFEFF') {
+        //因为客户要求非utf8格式并非utf8-bom而注释,由外部调用时传入
+        // const dataType = '\uFEFF';
+        // Add dataType to text for open in excel correctly
         if (window.Blob && window.URL && window.URL.createObjectURL) {
-            const csvData = new Blob([BOM + text], { type: 'text/csv' });
+            const csvData = new Blob([dataType  + text], { type: 'text/csv' });
             return URL.createObjectURL(csvData);
         } else {
-            return 'data:attachment/csv;charset=utf-8,' + BOM + encodeURIComponent(text);
+            return 'data:attachment/csv;charset=utf-8,' + dataType  + encodeURIComponent(text);
         }
     },
 
-    download (filename, text) {
+    download (filename, text, dataType = '\uFEFF') {
         if (has('ie') && has('ie') < 10) {
             // has module unable identify ie11 and Edge
             const oWin = window.top.open('about:blank', '_blank');
@@ -59,13 +60,14 @@ const csv = {
             oWin.document.execCommand('SaveAs', filename);
             oWin.close();
         } else if (has('ie') === 10 || this._isIE11() || this._isEdge()) {
-            const BOM = '\uFEFF';
-            const csvData = new Blob([BOM + text], { type: 'text/csv' });
+            //因为客户要求非utf8格式并非utf8-bom而注释,由外部调用时传入
+            // const BOM = '\uFEFF';
+            const csvData = new Blob([dataType + text], { type: 'text/csv' });
             navigator.msSaveBlob(csvData, filename);
         } else {
             const link = document.createElement('a');
             link.download = filename;
-            link.href = this._getDownloadUrl(text);
+            link.href = this._getDownloadUrl(text, dataType);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
