@@ -9,7 +9,7 @@
         inject: ['TabsInstance'],
         props: {
             name: {
-                type: String
+                type: [String, Number]
             },
             label: {
                 type: [String, Function],
