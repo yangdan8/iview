@@ -50,8 +50,8 @@
                         this.popperStatus = true;
                     });
                 } else {
-                    this.$nextTick(()=>{                        
-                      if(this.$parent.$refs.reference){
+                    this.$nextTick(() => {     
+                    //   if(this.$parent.$refs.reference){
                         this.popper = new Popper(this.$parent.$refs.reference, this.$el, {
                             placement: this.placement,
                             modifiers: {
@@ -70,7 +70,7 @@
                                 this.resetTransformOrigin();
                             }
                         });
-                      }
+                    // }
                     });
                 }
                 // set a height for parent is Modal and Select's width is 100%
