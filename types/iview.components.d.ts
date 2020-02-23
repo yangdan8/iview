@@ -144,15 +144,21 @@ interface IViewInstallOptions extends IViewGlobalOptions {
   i18n?: any;
 }
 
-declare const API: {
-  version: string;
-  locale: (l: any) => void;
-  i18n: (fn: any) => void;
-  install: (Vue: Vue, opts: IViewInstallOptions) => void;
-  lang: (code: string) => void;
-};
+// declare const API: {
+//   version: string;
+//   locale: (l: any) => void;
+//   i18n: (fn: any) => void;
+//   install: (Vue: Vue, opts: IViewInstallOptions) => void;
+//   lang: (code: string) => void;
+// };
 
-export default API;
+// export default API;
+
+export const version: string;
+export const locale: (l: any) => void;
+export const i18n: (fn: any) => void;
+export const install: (Vue: Vue, opts: IViewInstallOptions) => void;
+export const lang: (code: string) => void;
 
 import * as m from 'vue';
 declare module 'vue/types/vue' {
