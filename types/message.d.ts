@@ -4,9 +4,7 @@
 // Definitions: https://github.com/yangdan8/iview.git
 import Vue, { VNode, CreateElement, Component } from 'vue';
 
-export class Message extends Vue {}
-
-export class MessageInstance {
+export class Message extends Vue {
   /**
    * 消息
    * @param config MessageConfig为相关配置,string为待显示的内容
@@ -80,6 +78,6 @@ declare module 'vue/types/vue' {
     /**
      * 全局提示
      */
-    $Message: Message & MessageInstance;
+    $Message: Message;
   }
 }
