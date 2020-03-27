@@ -2,9 +2,12 @@
 // Project: https://github.com/iview/iview
 // Definitions by: yangdan
 // Definitions: https://github.com/yangdan8/iview.git
-import Vue, { VNode, CreateElement, Component } from 'vue';
+import Vue, { VueConstructor, VNode, CreateElement, Component } from 'vue';
 
-export class Message extends Vue {
+export interface Message extends Omit<Vue, 'config'> {}
+
+export declare const Message: {
+  new(): Vue;
   /**
    * 消息
    * @param config MessageConfig为相关配置,string为待显示的内容
@@ -19,7 +22,7 @@ export class Message extends Vue {
    * 警告
    * @param config MessageConfig为相关配置,string为待显示的内容
    */
-  warning(config?: MessageConfig | string): () => void;
+   warning(config?: MessageConfig | string): () => void;
   /**
    * 错误
    * @param config MessageConfig为相关配置,string为待显示的内容
@@ -39,7 +42,8 @@ export class Message extends Vue {
    * 销毁
    */
   destroy(): void;
-}
+};
+
 
 export declare class MessageConfig {
   /**
