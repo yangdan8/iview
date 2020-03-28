@@ -2,11 +2,12 @@
 // Project: https://github.com/iview/iview
 // Definitions by: yangdan
 // Definitions: https://github.com/yangdan8/iview.git
-import Vue, { VNode, CreateElement } from "vue";
+import Vue, { VNode, CreateElement } from 'vue';
 
-export declare class Notice extends Vue {}
+export interface Notice extends Vue {}
 
-export declare class NoticeInstance {
+export declare const Notice: {
+    new(): Notice;
     /**
      * 打开
      * @param config NoticeConfig为相关配置,string为待显示的内容
@@ -85,11 +86,11 @@ export declare class NoticeGlobalConfig {
     duration?: number;
 }
 
-declare module "vue/types/vue" {
+declare module 'vue/types/vue' {
     interface Vue {
         /**
          * 通知提醒
          */
-        $Notice: Notice & NoticeInstance;
+        $Notice: Notice;
     }
 }

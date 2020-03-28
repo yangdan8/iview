@@ -4,7 +4,7 @@
 // Definitions: https://github.com/yangdan8/iview.git
 import Vue, { VNode, CreateElement } from 'vue';
 
-export declare class Spin extends Vue {
+export interface Spin extends Vue {
   /**
    * Spin尺寸，可选值为large和small或者不设置
    */
@@ -25,11 +25,12 @@ export declare class Spin extends Vue {
   };
 }
 
-export declare class SpinShowOptions extends Spin {
+export declare class SpinShowOptions extends Vue {
   render?: (h?: CreateElement) => VNode;
 }
 
-export declare class SpinInstance {
+export declare const Spin: {
+  new(): Spin;
   /**
    * 展示
    */
@@ -37,15 +38,15 @@ export declare class SpinInstance {
   /**
    * 隐藏
    */
-  hide:()=>void;
+  hide:() => void;
 }
 
 import * as m from 'vue';
 declare module 'vue/types/vue' {
   interface Vue {
     /**
-     * 
+     *
      */
-    $Spin: Spin & SpinInstance;
+    $Spin: Spin;
   }
 }
