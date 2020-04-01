@@ -67,6 +67,13 @@
             validate(callback) {
                 return new Promise(resolve => {
                     let valid = true;
+                    if(this.fields.length<=0){
+                        resolve(valid);
+                        if (typeof callback === 'function') {
+                            callback(valid);
+                        }
+                        return;
+                    }
                     let count = 0;
                     this.fields.forEach(field => {
                         field.validate('', errors => {
