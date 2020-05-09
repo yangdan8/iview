@@ -20766,11 +20766,16 @@ _notification2.default.newInstance = function (properties) {
         },
 
         component: notification,
-        destroy: function destroy(element) {
+        destroy: function destroy(element, timeout) {
             notification.closeAll();
-            setTimeout(function () {
+            var fn = function fn() {
                 document.body.removeChild(document.getElementsByClassName(element)[0]);
-            }, 500);
+            };
+            if (null === timeout) {
+                fn();
+            } else {
+                setTimeout(fn, undefined === timeout ? 500 : timeout);
+            }
         }
     };
 }.bind(undefined);
@@ -29162,7 +29167,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '3.5.5-pi.13',
+    version: '3.5.5-pi.14',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
@@ -38367,7 +38372,7 @@ exports.default = {
     destroy: function destroy() {
         var instance = getMessageInstance();
         messageInstance = null;
-        instance.destroy('ivu-message');
+        instance.destroy('ivu-message', null);
     }
 };
 
