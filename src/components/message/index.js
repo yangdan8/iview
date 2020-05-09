@@ -103,6 +103,6 @@ export default {
     destroy () {
         let instance = getMessageInstance();
         messageInstance = null;
-        instance.destroy('ivu-message');
+        instance.destroy('ivu-message', null);
     }
 };

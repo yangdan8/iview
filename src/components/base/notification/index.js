@@ -24,11 +24,17 @@ Notification.newInstance = properties => {
             notification.close(name);
         },
         component: notification,
-        destroy (element) {
+        destroy (element, timeout) {
             notification.closeAll();
-            setTimeout(function() {
+            const fn = function() {
                 document.body.removeChild(document.getElementsByClassName(element)[0]);
-            }, 500);
+            };
+            if(null === timeout){
+                fn();
+            }
+            else{
+                setTimeout(fn,  undefined === timeout ? 500 : timeout);
+            }
         }
     };
 };
