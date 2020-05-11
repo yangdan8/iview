@@ -86,6 +86,7 @@
                 type: Number
             },
             beforeUpload: Function,
+            customUpload: Function,
             onProgress: {
                 type: Function,
                 default () {
@@ -238,6 +239,12 @@
                         this.onExceededSize(file, this.fileList);
                         return false;
                     }
+                }
+
+                const customUpload = this.customUpload;
+                if (typeof customUpload === 'function') {
+                    customUpload(file);
+                    return;
                 }
 
                 this.handleStart(file);
