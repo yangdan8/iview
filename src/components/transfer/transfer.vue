@@ -35,6 +35,7 @@
                 h(List, {
                     ref: 'left',
                     props: {
+                        indexTitle: this.indexTitle,
                         prefixCls: this.prefixCls + '-list',
                         data: this.leftData,
                         renderFormat: this.renderFormat,
@@ -64,6 +65,7 @@
                 h(List, {
                     ref: 'right',
                     props: {
+                        indexTitle: this.indexTitle,
                         prefixCls: this.prefixCls + '-list',
                         data: this.rightData,
                         renderFormat: this.renderFormat,

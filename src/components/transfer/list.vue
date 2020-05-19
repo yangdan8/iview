@@ -38,6 +38,7 @@
         name: 'TransferList',
         components: { Search, Checkbox },
         props: {
+            indexTitle: String,
             prefixCls: String,
             data: Array,
             renderFormat: Function,
