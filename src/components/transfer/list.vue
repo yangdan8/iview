@@ -1,8 +1,9 @@
 <template>
     <div :class="classes" :style="listStyle">
         <div :class="prefixCls + '-header'">
+            <span :class="prefixCls + '-header-index'" v-if="indexTitle">{{ indexTitle }}</span>
             <Checkbox :value="checkedAll" :disabled="checkedAllDisabled" @on-change="toggleSelectAll"></Checkbox>
-            <span :class="prefixCls + '-header-title'" @click="toggleSelectAll(!checkedAll)">{{ title }}</span>
+            <span :class="prefixCls + '-header-title'" @click="toggleSelectAll(!checkedAll)" v-html="title"></span>
             <span :class="prefixCls + '-header-count'">{{ count }}</span>
         </div>
         <div :class="bodyClasses">
@@ -16,9 +17,10 @@
             </div>
             <ul :class="prefixCls + '-content'">
                 <li
-                    v-for="item in filterData"
+                    v-for="(item,index) in filterData"
                     :class="itemClasses(item)"
                     @click.prevent="select(item)">
+                    <span :class="prefixCls + '-content-index'" v-if="indexTitle">{{ index + 1 }}</span>
                     <Checkbox :value="isCheck(item)" :disabled="item.disabled"></Checkbox>
                     <span v-html="showLabel(item)"></span>
                 </li>

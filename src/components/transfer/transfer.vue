@@ -83,6 +83,9 @@
             ]);
         },
         props: {
+            indexTitle: {
+                type: String,
+            },
             data: {
                 type: Array,
                 default () {
