@@ -8,7 +8,8 @@
  */
 function getTarget (node, el) {
     const rootNode = el.getRootNode();
-    const isDocument = rootNode === document;
+    //fix Failed to execute 'appendChild' on 'Node': The new child element contains the parent.
+    const isDocument = rootNode === document || rootNode === el;
     if (node === void 0) {
         node = isDocument ? document.body : rootNode;
     }
