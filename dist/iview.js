@@ -1607,7 +1607,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function getTarget(node, el) {
     var rootNode = el.getRootNode();
-    var isDocument = rootNode === document;
+
+    var isDocument = rootNode === document || rootNode === el;
     if (node === void 0) {
         node = isDocument ? document.body : rootNode;
     }
@@ -29182,7 +29183,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '3.5.5-pi.20',
+    version: '3.5.5-pi.21',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
