@@ -1605,12 +1605,14 @@ var _assign2 = _interopRequireDefault(_assign);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function getTarget(node) {
+function getTarget(node, el) {
+    var shadowRoot = el.getRootNode();
+    var isInShadow = shadowRoot === document;
     if (node === void 0) {
-        node = document.body;
+        node = isInShadow ? shadowRoot : document.body;
     }
     if (node === true) {
-        return document.body;
+        return isInShadow ? shadowRoot : document.body;;
     }
     return node instanceof window.Node ? node : document.querySelector(node);
 }
@@ -1628,14 +1630,14 @@ var directive = {
 
         if (value !== false) {
             parentNode.replaceChild(home, el);
-            getTarget(value).appendChild(el);
+            getTarget(value, el).appendChild(el);
             hasMovedOut = true;
         }
         if (!el.__transferDomData) {
             el.__transferDomData = {
                 parentNode: parentNode,
                 home: home,
-                target: getTarget(value),
+                target: getTarget(value, el),
                 hasMovedOut: hasMovedOut
             };
         }
@@ -1655,13 +1657,13 @@ var directive = {
         if (!hasMovedOut && value) {
             parentNode.replaceChild(home, el);
 
-            getTarget(value).appendChild(el);
-            el.__transferDomData = (0, _assign2.default)({}, el.__transferDomData, { hasMovedOut: true, target: getTarget(value) });
+            getTarget(value, el).appendChild(el);
+            el.__transferDomData = (0, _assign2.default)({}, el.__transferDomData, { hasMovedOut: true, target: getTarget(value, el) });
         } else if (hasMovedOut && value === false) {
             parentNode.replaceChild(el, home);
-            el.__transferDomData = (0, _assign2.default)({}, el.__transferDomData, { hasMovedOut: false, target: getTarget(value) });
+            el.__transferDomData = (0, _assign2.default)({}, el.__transferDomData, { hasMovedOut: false, target: getTarget(value, el) });
         } else if (value) {
-            getTarget(value).appendChild(el);
+            getTarget(value, el).appendChild(el);
         }
     },
     unbind: function unbind(el) {
@@ -29180,7 +29182,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '3.5.5-pi.18',
+    version: '3.5.5-pi.19',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
