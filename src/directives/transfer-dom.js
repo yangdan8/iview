@@ -6,10 +6,10 @@
  * @param {(Node|string|Boolean)} [node=document.body] DOM Node, CSS selector, or Boolean
  * @return {Node} The target that the el will be appended to
  */
-function getTarget (node, el) {
-    const rootNode = el.getRootNode();
+function getTarget (node, parentNode) {
+    const rootNode = parentNode.getRootNode();
     //fix Failed to execute 'appendChild' on 'Node': The new child element contains the parent.
-    const isDocument = rootNode === document || rootNode === el;
+    const isDocument = rootNode === document || rootNode === parentNode;
     if (node === void 0) {
         node = isDocument ? document.body : rootNode;
     }
@@ -30,14 +30,14 @@ const directive = {
 
         if (value !== false) {
             parentNode.replaceChild(home, el); // moving out, el is no longer in the document
-            getTarget(value, el).appendChild(el); // moving into new place
+            getTarget(value, parentNode).appendChild(el); // moving into new place
             hasMovedOut = true
         }
         if (!el.__transferDomData) {
             el.__transferDomData = {
                 parentNode: parentNode,
                 home: home,
-                target: getTarget(value, el),
+                target: getTarget(value, parentNode),
                 hasMovedOut: hasMovedOut
             }
         }
@@ -56,15 +56,15 @@ const directive = {
             // remove from document and leave placeholder
             parentNode.replaceChild(home, el);
             // append to target
-            getTarget(value, el).appendChild(el);
-            el.__transferDomData = Object.assign({}, el.__transferDomData, { hasMovedOut: true, target: getTarget(value, el) });
+            getTarget(value, parentNode).appendChild(el);
+            el.__transferDomData = Object.assign({}, el.__transferDomData, { hasMovedOut: true, target: getTarget(value, parentNode) });
         } else if (hasMovedOut && value === false) {
             // previously moved, coming back home
             parentNode.replaceChild(el, home);
-            el.__transferDomData = Object.assign({}, el.__transferDomData, { hasMovedOut: false, target: getTarget(value, el) });
+            el.__transferDomData = Object.assign({}, el.__transferDomData, { hasMovedOut: false, target: getTarget(value, parentNode) });
         } else if (value) {
             // already moved, going somewhere else
-            getTarget(value, el).appendChild(el);
+            getTarget(value, parentNode).appendChild(el);
         }
     },
     unbind (el) {
