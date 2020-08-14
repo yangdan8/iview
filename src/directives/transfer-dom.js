@@ -7,13 +7,13 @@
  * @return {Node} The target that the el will be appended to
  */
 function getTarget (node, el) {
-    const shadowRoot = el.getRootNode();
-    const isInShadow = shadowRoot === document;
+    const rootNode = el.getRootNode();
+    const isDocument = rootNode === document;
     if (node === void 0) {
-        node = isInShadow ? shadowRoot : document.body;
+        node = isDocument ? document.body : rootNode;
     }
     if (node === true) {
-        return isInShadow ? shadowRoot : document.body;;
+        return isDocument ? document.body : rootNode;
     }
     return node instanceof window.Node ? node : document.querySelector(node);
 }

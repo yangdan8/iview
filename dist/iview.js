@@ -1606,13 +1606,13 @@ var _assign2 = _interopRequireDefault(_assign);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function getTarget(node, el) {
-    var shadowRoot = el.getRootNode();
-    var isInShadow = shadowRoot === document;
+    var rootNode = el.getRootNode();
+    var isDocument = rootNode === document;
     if (node === void 0) {
-        node = isInShadow ? shadowRoot : document.body;
+        node = isDocument ? document.body : rootNode;
     }
     if (node === true) {
-        return isInShadow ? shadowRoot : document.body;;
+        return isDocument ? document.body : rootNode;
     }
     return node instanceof window.Node ? node : document.querySelector(node);
 }
@@ -29182,7 +29182,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '3.5.5-pi.19',
+    version: '3.5.5-pi.20',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
