@@ -20761,7 +20761,7 @@ _notification2.default.newInstance = function (properties) {
 
     return {
         notice: function notice(noticeProps) {
-            var piParentNode = props.piParentNode || document.body;
+            var piParentNode = noticeProps && noticeProps.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             notification.add(noticeProps);
@@ -29185,7 +29185,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '3.5.5-pi.23',
+    version: '3.5.5-pi.24',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
@@ -37918,7 +37918,7 @@ _loadingBar2.default.newInstance = function (properties) {
 
     return {
         update: function update(options) {
-            var piParentNode = props.piParentNode || document.body;
+            var piParentNode = options && options.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             if ('percent' in options) {
@@ -38828,7 +38828,7 @@ _modal2.default.newInstance = function (properties) {
 
     return {
         show: function show(props) {
-            var piParentNode = props.piParentNode || document.body;
+            var piParentNode = props && props.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             modal.$parent.showCancel = props.showCancel;
@@ -41310,8 +41310,8 @@ _spin2.default.newInstance = function (properties) {
     var spin = Instance.$children[0];
 
     return {
-        show: function show() {
-            var piParentNode = props.piParentNode || document.body;
+        show: function show(props) {
+            var piParentNode = props && props.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             spin.visible = true;

@@ -200,7 +200,7 @@ Modal.newInstance = properties => {
 
     return {
         show (props) {
-            const piParentNode = props.piParentNode || document.body;
+            const piParentNode = props && props.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             modal.$parent.showCancel = props.showCancel;

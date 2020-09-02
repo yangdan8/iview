@@ -17,7 +17,7 @@ Notification.newInstance = properties => {
 
     return {
         notice (noticeProps) {
-            const piParentNode = props.piParentNode || document.body;
+            const piParentNode = noticeProps && noticeProps.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             notification.add(noticeProps);

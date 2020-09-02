@@ -18,7 +18,7 @@ LoadingBar.newInstance = properties => {
 
     return {
         update (options) {
-            const piParentNode = props.piParentNode || document.body;
+            const piParentNode = options && options.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             if ('percent' in options) {

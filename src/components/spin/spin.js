@@ -48,8 +48,8 @@ Spin.newInstance = properties => {
     const spin = Instance.$children[0];
 
     return {
-        show () {
-            const piParentNode = props.piParentNode || document.body;
+        show (props) {
+            const piParentNode = props && props.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             spin.visible = true;
