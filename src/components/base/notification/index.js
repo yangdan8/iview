@@ -13,11 +13,13 @@ Notification.newInstance = properties => {
     });
 
     const component = Instance.$mount();
-    document.body.appendChild(component.$el);
     const notification = Instance.$children[0];
 
     return {
         notice (noticeProps) {
+            const piParentNode = props.piParentNode || document.body;
+            piParentNode.appendChild(component.$el);
+
             notification.add(noticeProps);
         },
         remove (name) {

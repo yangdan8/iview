@@ -14,11 +14,13 @@ LoadingBar.newInstance = properties => {
     });
 
     const component = Instance.$mount();
-    document.body.appendChild(component.$el);
     const loading_bar = Instance.$children[0];
 
     return {
         update (options) {
+            const piParentNode = props.piParentNode || document.body;
+            piParentNode.appendChild(component.$el);
+
             if ('percent' in options) {
                 loading_bar.percent = options.percent;
             }

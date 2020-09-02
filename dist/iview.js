@@ -20757,11 +20757,13 @@ _notification2.default.newInstance = function (properties) {
     });
 
     var component = Instance.$mount();
-    document.body.appendChild(component.$el);
     var notification = Instance.$children[0];
 
     return {
         notice: function notice(noticeProps) {
+            var piParentNode = props.piParentNode || document.body;
+            piParentNode.appendChild(component.$el);
+
             notification.add(noticeProps);
         },
         remove: function remove(name) {
@@ -29183,7 +29185,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '3.5.5-pi.22',
+    version: '3.5.5-pi.23',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
@@ -37912,11 +37914,13 @@ _loadingBar2.default.newInstance = function (properties) {
     });
 
     var component = Instance.$mount();
-    document.body.appendChild(component.$el);
     var loading_bar = Instance.$children[0];
 
     return {
         update: function update(options) {
+            var piParentNode = props.piParentNode || document.body;
+            piParentNode.appendChild(component.$el);
+
             if ('percent' in options) {
                 loading_bar.percent = options.percent;
             }
@@ -38820,11 +38824,13 @@ _modal2.default.newInstance = function (properties) {
     });
 
     var component = Instance.$mount();
-    document.body.appendChild(component.$el);
     var modal = Instance.$children[0];
 
     return {
         show: function show(props) {
+            var piParentNode = props.piParentNode || document.body;
+            piParentNode.appendChild(component.$el);
+
             modal.$parent.showCancel = props.showCancel;
             modal.$parent.iconType = props.icon;
 
@@ -41301,11 +41307,13 @@ _spin2.default.newInstance = function (properties) {
     });
 
     var component = Instance.$mount();
-    document.body.appendChild(component.$el);
     var spin = Instance.$children[0];
 
     return {
         show: function show() {
+            var piParentNode = props.piParentNode || document.body;
+            piParentNode.appendChild(component.$el);
+
             spin.visible = true;
             tIndex = handleGetIndex();
         },

@@ -45,11 +45,13 @@ Spin.newInstance = properties => {
     });
 
     const component = Instance.$mount();
-    document.body.appendChild(component.$el);
     const spin = Instance.$children[0];
 
     return {
         show () {
+            const piParentNode = props.piParentNode || document.body;
+            piParentNode.appendChild(component.$el);
+
             spin.visible = true;
             tIndex = handleGetIndex();
         },
