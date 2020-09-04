@@ -15,10 +15,11 @@ LoadingBar.newInstance = properties => {
 
     const component = Instance.$mount();
     const loading_bar = Instance.$children[0];
+    let piParentNode;
 
     return {
         update (options) {
-            const piParentNode = options && options.piParentNode || document.body;
+            piParentNode = options && options.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             if ('percent' in options) {
@@ -33,7 +34,7 @@ LoadingBar.newInstance = properties => {
         },
         component: loading_bar,
         destroy () {
-            document.body.removeChild(document.getElementsByClassName('ivu-loading-bar')[0]);
+            piParentNode.removeChild(piParentNode.getElementsByClassName('ivu-loading-bar')[0]);
         }
     };
 };

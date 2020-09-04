@@ -14,10 +14,11 @@ Notification.newInstance = properties => {
 
     const component = Instance.$mount();
     const notification = Instance.$children[0];
+    let piParentNode;
 
     return {
         notice (noticeProps) {
-            const piParentNode = noticeProps && noticeProps.piParentNode || document.body;
+            piParentNode = noticeProps && noticeProps.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             notification.add(noticeProps);
@@ -29,7 +30,7 @@ Notification.newInstance = properties => {
         destroy (element, timeout) {
             notification.closeAll();
             const fn = function() {
-                document.body.removeChild(document.getElementsByClassName(element)[0]);
+                piParentNode.removeChild(piParentNode.getElementsByClassName(element)[0]);
             };
             if(null === timeout){
                 fn();

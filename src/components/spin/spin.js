@@ -46,10 +46,11 @@ Spin.newInstance = properties => {
 
     const component = Instance.$mount();
     const spin = Instance.$children[0];
+    let piParentNode;
 
     return {
         show (props) {
-            const piParentNode = props && props.piParentNode || document.body;
+            piParentNode = props && props.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             spin.visible = true;
@@ -59,8 +60,8 @@ Spin.newInstance = properties => {
             spin.visible = false;
             setTimeout(function() {
                 spin.$parent.$destroy();
-                if (document.getElementsByClassName('ivu-spin-fullscreen')[0] !== undefined) {
-                    document.body.removeChild(document.getElementsByClassName('ivu-spin-fullscreen')[0]);
+                if (piParentNode.getElementsByClassName('ivu-spin-fullscreen')[0] !== undefined) {
+                    piParentNode.removeChild(piParentNode.getElementsByClassName('ivu-spin-fullscreen')[0]);
                 }
                 cb();
             }, 500);

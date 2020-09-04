@@ -185,7 +185,7 @@ Modal.newInstance = properties => {
             destroy () {
                 this.$destroy();
                 if( this.$el ){
-                    document.body.removeChild(this.$el);
+                    piParentNode.removeChild(this.$el);
                 }
                 this.onRemove();
             },
@@ -197,10 +197,11 @@ Modal.newInstance = properties => {
 
     const component = Instance.$mount();
     const modal = Instance.$children[0];
+    let piParentNode;
 
     return {
         show (props) {
-            const piParentNode = props && props.piParentNode || document.body;
+            piParentNode = props && props.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             modal.$parent.showCancel = props.showCancel;

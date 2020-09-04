@@ -20758,10 +20758,11 @@ _notification2.default.newInstance = function (properties) {
 
     var component = Instance.$mount();
     var notification = Instance.$children[0];
+    var piParentNode = void 0;
 
     return {
         notice: function notice(noticeProps) {
-            var piParentNode = noticeProps && noticeProps.piParentNode || document.body;
+            piParentNode = noticeProps && noticeProps.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             notification.add(noticeProps);
@@ -20774,7 +20775,7 @@ _notification2.default.newInstance = function (properties) {
         destroy: function destroy(element, timeout) {
             notification.closeAll();
             var fn = function fn() {
-                document.body.removeChild(document.getElementsByClassName(element)[0]);
+                piParentNode.removeChild(piParentNode.getElementsByClassName(element)[0]);
             };
             if (null === timeout) {
                 fn();
@@ -29185,7 +29186,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '3.5.5-pi.24',
+    version: '3.5.5-pi.25',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
@@ -37915,10 +37916,11 @@ _loadingBar2.default.newInstance = function (properties) {
 
     var component = Instance.$mount();
     var loading_bar = Instance.$children[0];
+    var piParentNode = void 0;
 
     return {
         update: function update(options) {
-            var piParentNode = options && options.piParentNode || document.body;
+            piParentNode = options && options.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             if ('percent' in options) {
@@ -37934,7 +37936,7 @@ _loadingBar2.default.newInstance = function (properties) {
 
         component: loading_bar,
         destroy: function destroy() {
-            document.body.removeChild(document.getElementsByClassName('ivu-loading-bar')[0]);
+            piParentNode.removeChild(piParentNode.getElementsByClassName('ivu-loading-bar')[0]);
         }
     };
 }.bind(undefined);
@@ -38813,7 +38815,7 @@ _modal2.default.newInstance = function (properties) {
             destroy: function destroy() {
                 this.$destroy();
                 if (this.$el) {
-                    document.body.removeChild(this.$el);
+                    piParentNode.removeChild(this.$el);
                 }
                 this.onRemove();
             },
@@ -38825,10 +38827,11 @@ _modal2.default.newInstance = function (properties) {
 
     var component = Instance.$mount();
     var modal = Instance.$children[0];
+    var piParentNode = void 0;
 
     return {
         show: function show(props) {
-            var piParentNode = props && props.piParentNode || document.body;
+            piParentNode = props && props.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             modal.$parent.showCancel = props.showCancel;
@@ -41308,10 +41311,11 @@ _spin2.default.newInstance = function (properties) {
 
     var component = Instance.$mount();
     var spin = Instance.$children[0];
+    var piParentNode = void 0;
 
     return {
         show: function show(props) {
-            var piParentNode = props && props.piParentNode || document.body;
+            piParentNode = props && props.piParentNode || document.body;
             piParentNode.appendChild(component.$el);
 
             spin.visible = true;
@@ -41321,8 +41325,8 @@ _spin2.default.newInstance = function (properties) {
             spin.visible = false;
             setTimeout(function () {
                 spin.$parent.$destroy();
-                if (document.getElementsByClassName('ivu-spin-fullscreen')[0] !== undefined) {
-                    document.body.removeChild(document.getElementsByClassName('ivu-spin-fullscreen')[0]);
+                if (piParentNode.getElementsByClassName('ivu-spin-fullscreen')[0] !== undefined) {
+                    piParentNode.removeChild(piParentNode.getElementsByClassName('ivu-spin-fullscreen')[0]);
                 }
                 cb();
             }, 500);
