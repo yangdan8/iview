@@ -8320,10 +8320,10 @@ uws@~9.14.0:
   version "9.14.0"
   resolved "https://registry.yarnpkg.com/uws/-/uws-9.14.0.tgz#fac8386befc33a7a3705cbd58dc47b430ca4dd95"
 
-v-click-outside-x@^4.0.19:
-  version "4.0.19"
-  resolved "https://registry.yarnpkg.com/v-click-outside-x/-/v-click-outside-x-4.0.19.tgz#63fc2e68e99b3486fde4209435ac0ed3b67da3fc"
-  integrity sha512-QY2XhLJWDCypJKJz+FftvpYa1nzq7mzUP756H7ucu89c/8Rx1aog9gOhPEwDK16A+y3LGvPuAYScKr6/7xh18Q==
+v-click-outside-x@4.1.1-pi.1:
+  version "4.1.1-pi.1"
+  resolved "http://192.168.13.111:8081/repository/pilot-all/v-click-outside-x/-/v-click-outside-x-4.1.1-pi.1.tgz#8997a2ab5028b105b1006c9edafe5d8bbfb587e1"
+  integrity sha512-F5SylGGqeVhLlHTdQGFTrdhK+VyY82cOsnbxeH3b1frqVgb/WFhG1mx/cAIy8WFDUk0VUS+pb4LYRYJdSEoSIw==
 
 v8flags@^2.0.2, v8flags@^2.1.1:
   version "2.1.1"

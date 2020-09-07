@@ -1955,13 +1955,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["install"] = install;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__package_json__ = __webpack_require__(294);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__package_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__package_json__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
 
 
 /**
@@ -1985,7 +1987,13 @@ var instancesList = [captureInstances, nonCaptureInstances];
  */
 
 var commonHandler = function onCommonEvent(context, instances, event, arg) {
+  var _event$path;
+
   var target = event.target;
+
+  if (target.shadowRoot && ((_event$path = event.path) === null || _event$path === void 0 ? void 0 : _event$path[0])) {
+    target = (_readOnlyError("target"), event.path[0]);
+  }
 
   var itemIteratee = function itemIteratee(item) {
     var el = item.el;
@@ -2090,13 +2098,13 @@ var directive = Object.defineProperties({}, {
 
       var arg = binding.arg || CLICK;
 
-      var normalisedBinding = _objectSpread({}, binding, {}, {
+      var normalisedBinding = _objectSpread(_objectSpread({}, binding), {
         arg: arg,
-        modifiers: _objectSpread({}, {
+        modifiers: _objectSpread(_objectSpread({}, {
           capture: false,
           prevent: false,
           stop: false
-        }, {}, binding.modifiers)
+        }), binding.modifiers)
       });
 
       var useCapture = normalisedBinding.modifiers.capture;
@@ -29186,7 +29194,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '3.5.5-pi.26',
+    version: '3.5.5-pi.27',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
@@ -30027,7 +30035,7 @@ exports.staticRenderFns = staticRenderFns;
 /* 294 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"v-click-outside-x","version":"4.0.19","description":"Vue directive to react on clicks outside an element.","homepage":"https://github.com/Xotic750/v-click-outside-x.git","author":{"name":"Graham Fairweather","email":"xotic750@gmail.com"},"copyright":"Copyright (c) 2018-present","keywords":["vue","click","outside","directive"],"files":["dist","src"],"module":"dist/v-click-outside-x.esm.js","main":"dist/v-click-outside-x.js","typings":"types/index.d.ts","jsdelivr":"dist/v-click-outside-x.min.js","scripts":{"build:esm":"mkdirp dist && babel -s true --env-name esm src/v-click-outside-x.js -o dist/v-click-outside-x.esm.js","build:base":"webpack --bail --progress --profile --colors","build":"npm run build:esm && cross-env NODE_ENV=production npm run build:base --","build:dev":"npm run build:base --","clean":"rimraf dist && npm run clean:coverage","clean:coverage":"rimraf __tests__/coverage","lint":"eslint -f 'node_modules/eslint-friendly-formatter' --ext .js,.json .","lint-fix":"npm run lint -- --fix","report":"npm run build -- --env.report","report:dev":"npm run build:dev -- --env.report","security":"npm audit","security-fix":"npm run security -- fix","start":"nodemon --exec \"npm run build\" --watch src","test":"npm run clean:coverage && jest","test:ci":"npm run test -- --ci --maxWorkers=2","test:ci-coveralls":"npm run test:ci -- --coverage --coverageReporters=text-lcov | coveralls","test:coverage":"npm run test -- --coverage"},"license":"MIT","repository":{"type":"git","url":"https://github.com/Xotic750/v-click-outside-x.git"},"bugs":{"url":"https://github.com/Xotic750/v-click-outside-x/issues"},"dependencies":{},"devDependencies":{"@babel/cli":"^7.5.5","@babel/core":"^7.5.5","@babel/node":"^7.5.5","@babel/plugin-transform-property-mutators":"^7.2.0","@babel/plugin-transform-runtime":"^7.5.5","@babel/preset-env":"^7.5.5","@babel/runtime":"^7.5.5","@types/jest":"^24.0.18","@types/node":"^12.7.2","@types/webpack":"^4.39.1","@typescript-eslint/eslint-plugin":"^2.0.0","@typescript-eslint/parser":"^2.0.0","@xotic750/eslint-config-recommended":"^1.1.8","babel-core":"^7.0.0-0","babel-eslint":"^10.0.3","babel-loader":"^8.0.6","babel-plugin-lodash":"^3.3.4","caniuse-lite":"^1.0.30000989","coveralls":"^3.0.6","cross-env":"^5.2.0","eslint":"^6.2.2","eslint-friendly-formatter":"^4.0.1","eslint-import-resolver-webpack":"^0.11.1","eslint-loader":"^3.0.0","eslint-plugin-babel":"^5.3.0","eslint-plugin-compat":"^3.3.0","eslint-plugin-css-modules":"^2.11.0","eslint-plugin-eslint-comments":"^3.1.2","eslint-plugin-html":"^6.0.0","eslint-plugin-import":"^2.18.2","eslint-plugin-jest":"^22.15.2","eslint-plugin-jsdoc":"^15.8.3","eslint-plugin-json":"^1.4.0","eslint-plugin-lodash":"^6.0.0","eslint-plugin-no-use-extend-native":"^0.4.1","eslint-plugin-prefer-object-spread":"^1.2.1","eslint-plugin-prettier":"^3.1.0","eslint-plugin-promise":"^4.2.1","eslint-plugin-sort-class-members":"^1.6.0","eslint-plugin-switch-case":"^1.1.2","jest":"^24.9.0","jest-cli":"^24.9.0","jest-file":"^1.0.0","lodash":"^4.17.15","lodash-webpack-plugin":"^0.11.5","mkdirp":"^0.5.1","nodemon":"^1.19.1","prettier":"^1.18.2","rimraf":"^3.0.0","source-map-loader":"^0.2.4","strip-ansi":"^5.2.0","terser-webpack-plugin":"^1.4.1","typescript":"^3.5.3","webpack":"^4.39.3","webpack-bundle-analyzer":"^3.4.1","webpack-cli":"^3.3.7","webpack-global-object-x":"^1.0.0","webpack-merge":"^4.2.2"},"engines":{"node":">=8.11.4","npm":"6.10.1"},"browserslist":["> 1%","Explorer >= 9"]}
+module.exports = {"name":"v-click-outside-x","version":"4.1.1-pi.1","description":"Vue directive to react on clicks outside an element.","homepage":"https://github.com/Xotic750/v-click-outside-x.git","author":{"name":"Graham Fairweather","email":"xotic750@gmail.com"},"copyright":"Copyright (c) 2018-present","keywords":["vue","click","outside","directive"],"files":["dist","src"],"module":"dist/v-click-outside-x.esm.js","main":"dist/v-click-outside-x.js","typings":"types/index.d.ts","jsdelivr":"dist/v-click-outside-x.min.js","scripts":{"build:esm":"mkdirp dist && babel -s true --env-name esm src/v-click-outside-x.js -o dist/v-click-outside-x.esm.js","build:base":"webpack --bail --progress --profile --colors","build":"npm run build:esm && cross-env NODE_ENV=production npm run build:base --","build:dev":"npm run build:base --","clean":"rimraf dist && npm run clean:coverage","clean:coverage":"rimraf __tests__/coverage","lint":"eslint -f 'node_modules/eslint-friendly-formatter' --ext .js,.json .","lint-fix":"npm run lint -- --fix","report":"npm run build -- --env.report","report:dev":"npm run build:dev -- --env.report","security":"npm audit","security-fix":"npm run security -- fix","start":"nodemon --exec \"npm run build\" --watch src","test":"npm run clean:coverage && jest","test:ci":"npm run test -- --ci --maxWorkers=2","test:ci-coveralls":"npm run test:ci -- --coverage --coverageReporters=text-lcov | coveralls","test:coverage":"npm run test -- --coverage"},"license":"MIT","repository":{"type":"git","url":"https://github.com/Xotic750/v-click-outside-x.git"},"bugs":{"url":"https://github.com/Xotic750/v-click-outside-x/issues"},"dependencies":{},"devDependencies":{"@babel/cli":"^7.8.3","@babel/core":"^7.8.3","@babel/node":"^7.8.3","@babel/plugin-transform-property-mutators":"^7.8.3","@babel/plugin-transform-runtime":"^7.8.3","@babel/preset-env":"^7.8.3","@babel/runtime":"^7.8.3","@types/jest":"^24.0.25","@types/node":"^13.1.6","@types/webpack":"^4.41.2","@typescript-eslint/eslint-plugin":"^2.16.0","@typescript-eslint/parser":"^2.16.0","@xotic750/eslint-config-recommended":"^1.2.0","babel-core":"^7.0.0-0","babel-eslint":"^10.0.3","babel-loader":"^8.0.6","babel-plugin-lodash":"^3.3.4","caniuse-lite":"^1.0.30001020","coveralls":"^3.0.9","cross-env":"^6.0.3","eslint":"^6.8.0","eslint-friendly-formatter":"^4.0.1","eslint-import-resolver-webpack":"^0.12.1","eslint-loader":"^3.0.3","eslint-plugin-babel":"^5.3.0","eslint-plugin-compat":"^3.3.0","eslint-plugin-css-modules":"^2.11.0","eslint-plugin-eslint-comments":"^3.1.2","eslint-plugin-html":"^6.0.0","eslint-plugin-import":"^2.20.0","eslint-plugin-jest":"^22.17.0","eslint-plugin-jsdoc":"^20.3.0","eslint-plugin-json":"^1.4.0","eslint-plugin-lodash":"^6.0.0","eslint-plugin-no-use-extend-native":"^0.4.1","eslint-plugin-prefer-object-spread":"^1.2.1","eslint-plugin-prettier":"^3.1.2","eslint-plugin-promise":"^4.2.1","eslint-plugin-sort-class-members":"^1.6.0","eslint-plugin-switch-case":"^1.1.2","jest":"^24.9.0","jest-cli":"^24.9.0","jest-file":"^1.0.0","lodash":"^4.17.15","lodash-webpack-plugin":"^0.11.5","mkdirp":"^0.5.1","nodemon":"^2.0.2","prettier":"^1.19.1","rimraf":"^3.0.0","source-map-loader":"^0.2.4","strip-ansi":"^6.0.0","terser-webpack-plugin":"^2.3.2","typescript":"^3.7.4","webpack":"^4.41.5","webpack-bundle-analyzer":"^3.6.0","webpack-cli":"^3.3.10","webpack-global-object-x":"^1.0.0","webpack-merge":"^4.2.2"},"engines":{"node":">=8.11.4","npm":">=6.10.1"},"browserslist":["> 1%","Explorer >= 9"]}
 
 /***/ }),
 /* 295 */
