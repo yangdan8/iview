@@ -30,7 +30,7 @@ Notification.newInstance = properties => {
         destroy (element, timeout) {
             notification.closeAll();
             const fn = function() {
-                piParentNode.removeChild(piParentNode.getElementsByClassName(element)[0]);
+                piParentNode && piParentNode.removeChild(piParentNode.getElementsByClassName(element)[0]);
             };
             if(null === timeout){
                 fn();

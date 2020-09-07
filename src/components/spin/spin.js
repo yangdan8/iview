@@ -60,7 +60,7 @@ Spin.newInstance = properties => {
             spin.visible = false;
             setTimeout(function() {
                 spin.$parent.$destroy();
-                if (piParentNode.getElementsByClassName('ivu-spin-fullscreen')[0] !== undefined) {
+                if (piParentNode && piParentNode.getElementsByClassName('ivu-spin-fullscreen')[0] !== undefined) {
                     piParentNode.removeChild(piParentNode.getElementsByClassName('ivu-spin-fullscreen')[0]);
                 }
                 cb();

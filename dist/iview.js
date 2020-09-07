@@ -20775,7 +20775,7 @@ _notification2.default.newInstance = function (properties) {
         destroy: function destroy(element, timeout) {
             notification.closeAll();
             var fn = function fn() {
-                piParentNode.removeChild(piParentNode.getElementsByClassName(element)[0]);
+                piParentNode && piParentNode.removeChild(piParentNode.getElementsByClassName(element)[0]);
             };
             if (null === timeout) {
                 fn();
@@ -29186,7 +29186,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '3.5.5-pi.25',
+    version: '3.5.5-pi.26',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
@@ -37936,7 +37936,7 @@ _loadingBar2.default.newInstance = function (properties) {
 
         component: loading_bar,
         destroy: function destroy() {
-            piParentNode.removeChild(piParentNode.getElementsByClassName('ivu-loading-bar')[0]);
+            piParentNode && piParentNode.removeChild(piParentNode.getElementsByClassName('ivu-loading-bar')[0]);
         }
     };
 }.bind(undefined);
@@ -38815,7 +38815,7 @@ _modal2.default.newInstance = function (properties) {
             destroy: function destroy() {
                 this.$destroy();
                 if (this.$el) {
-                    piParentNode.removeChild(this.$el);
+                    piParentNode && piParentNode.removeChild(this.$el);
                 }
                 this.onRemove();
             },
@@ -41325,7 +41325,7 @@ _spin2.default.newInstance = function (properties) {
             spin.visible = false;
             setTimeout(function () {
                 spin.$parent.$destroy();
-                if (piParentNode.getElementsByClassName('ivu-spin-fullscreen')[0] !== undefined) {
+                if (piParentNode && piParentNode.getElementsByClassName('ivu-spin-fullscreen')[0] !== undefined) {
                     piParentNode.removeChild(piParentNode.getElementsByClassName('ivu-spin-fullscreen')[0]);
                 }
                 cb();

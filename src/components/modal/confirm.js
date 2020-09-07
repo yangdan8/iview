@@ -185,7 +185,7 @@ Modal.newInstance = properties => {
             destroy () {
                 this.$destroy();
                 if( this.$el ){
-                    piParentNode.removeChild(this.$el);
+                    piParentNode && piParentNode.removeChild(this.$el);
                 }
                 this.onRemove();
             },

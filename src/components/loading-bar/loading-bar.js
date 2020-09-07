@@ -34,7 +34,7 @@ LoadingBar.newInstance = properties => {
         },
         component: loading_bar,
         destroy () {
-            piParentNode.removeChild(piParentNode.getElementsByClassName('ivu-loading-bar')[0]);
+            piParentNode && piParentNode.removeChild(piParentNode.getElementsByClassName('ivu-loading-bar')[0]);
         }
     };
 };
