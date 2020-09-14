@@ -1,5 +1,5 @@
 <template>
-    <div v-transfer-dom :data-transfer="transfer">
+    <div v-transfer-dom="{value:value,rootNode:piParentNodeFn()}" :data-transfer="transfer">
         <transition :name="transitionNames[1]">
             <div :class="maskClasses" :style="wrapStyles" v-show="visible" v-if="showMask" @click="handleMask"></div>
         </transition>
@@ -50,6 +50,10 @@
         components: { Icon, iButton },
         directives: { TransferDom },
         props: {
+            piParentNodeFn: {
+                type: Function,
+                default: () => undefined
+            },
             value: {
                 type: Boolean,
                 default: false

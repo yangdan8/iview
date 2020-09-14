@@ -6,8 +6,8 @@
  * @param {(Node|string|Boolean)} [node=document.body] DOM Node, CSS selector, or Boolean
  * @return {Node} The target that the el will be appended to
  */
-function getTarget (node, parentNode) {
-    const rootNode = parentNode.getRootNode();
+function getTarget (node, parentNode, rootNode) {
+    rootNode = rootNode || parentNode.getRootNode();
     //fix Failed to execute 'appendChild' on 'Node': The new child element contains the parent.
     const isDocument = rootNode === document || rootNode === parentNode;
     if (node === void 0) {
@@ -25,19 +25,24 @@ const directive = {
         el.className = el.className ? el.className + ' v-transfer-dom' : 'v-transfer-dom';
         const parentNode = el.parentNode;
         if (!parentNode) return;
+        let rootNode = undefined;
+        if (typeof rootNode === 'object') {
+            value = value.value;
+            rootNode = value.rootNode;
+        }
         const home = document.createComment('');
         let hasMovedOut = false;
 
         if (value !== false) {
             parentNode.replaceChild(home, el); // moving out, el is no longer in the document
-            getTarget(value, parentNode).appendChild(el); // moving into new place
+            getTarget(value, parentNode, rootNode).appendChild(el); // moving into new place
             hasMovedOut = true
         }
         if (!el.__transferDomData) {
             el.__transferDomData = {
                 parentNode: parentNode,
                 home: home,
-                target: getTarget(value, parentNode),
+                target: getTarget(value, parentNode, rootNode),
                 hasMovedOut: hasMovedOut
             }
         }
@@ -47,6 +52,11 @@ const directive = {
         // need to make sure children are done updating (vs. `update`)
         const ref$1 = el.__transferDomData;
         if (!ref$1) return;
+        let rootNode = undefined;
+        if (typeof rootNode === 'object') {
+            value = value.value;
+            rootNode = value.rootNode;
+        }
         // homes.get(el)
         const parentNode = ref$1.parentNode;
         const home = ref$1.home;
@@ -56,15 +66,15 @@ const directive = {
             // remove from document and leave placeholder
             parentNode.replaceChild(home, el);
             // append to target
-            getTarget(value, parentNode).appendChild(el);
-            el.__transferDomData = Object.assign({}, el.__transferDomData, { hasMovedOut: true, target: getTarget(value, parentNode) });
+            getTarget(value, parentNode, rootNode).appendChild(el);
+            el.__transferDomData = Object.assign({}, el.__transferDomData, { hasMovedOut: true, target: getTarget(value, parentNode, rootNode) });
         } else if (hasMovedOut && value === false) {
             // previously moved, coming back home
             parentNode.replaceChild(el, home);
-            el.__transferDomData = Object.assign({}, el.__transferDomData, { hasMovedOut: false, target: getTarget(value, parentNode) });
+            el.__transferDomData = Object.assign({}, el.__transferDomData, { hasMovedOut: false, target: getTarget(value, parentNode, rootNode) });
         } else if (value) {
             // already moved, going somewhere else
-            getTarget(value, parentNode).appendChild(el);
+            getTarget(value, parentNode, rootNode).appendChild(el);
         }
     },
     unbind (el) {
