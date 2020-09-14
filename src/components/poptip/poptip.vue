@@ -22,7 +22,7 @@
                 @mouseenter="handleMouseenter"
                 @mouseleave="handleMouseleave"
                 :data-transfer="transfer"
-                v-transfer-dom>
+                v-transfer-dom="{value:value,rootNode:piParentNodeFn()}">
                 <div :class="[prefixCls + '-content']">
                     <div :class="[prefixCls + '-arrow']"></div>
                     <div :class="[prefixCls + '-inner']" v-if="confirm">
@@ -63,6 +63,10 @@
         directives: { clickOutside, TransferDom },
         components: { iButton },
         props: {
+            piParentNodeFn: {
+                type: Function,
+                default: () => undefined
+            },
             trigger: {
                 validator (value) {
                     return oneOf(value, ['click', 'focus', 'hover']);

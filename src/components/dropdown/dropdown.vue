@@ -15,7 +15,7 @@
                 @mouseleave.native="handleMouseleave"
                 :data-transfer="transfer"
                 :transfer="transfer"
-                v-transfer-dom><slot name="list"></slot></Drop>
+                v-transfer-dom="{value:visible,rootNode:piParentNodeFn()}"><slot name="list"></slot></Drop>
         </transition>
     </div>
 </template>
@@ -32,6 +32,10 @@
         directives: { clickOutside, TransferDom },
         components: { Drop },
         props: {
+            piParentNodeFn: {
+                type: Function,
+                default: () => undefined
+            },
             trigger: {
                 validator (value) {
                     return oneOf(value, ['click', 'hover', 'custom', 'contextMenu']);

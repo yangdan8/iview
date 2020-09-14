@@ -12,7 +12,7 @@
                 @mouseenter="handleShowPopper"
                 @mouseleave="handleClosePopper"
                 :data-transfer="transfer"
-                v-transfer-dom>
+                v-transfer-dom="{value:value,rootNode:piParentNodeFn()}">
                 <div :class="[prefixCls + '-content']">
                     <div :class="[prefixCls + '-arrow']"></div>
                     <div :class="innerClasses" :style="innerStyles"><slot name="content">{{ content }}</slot></div>
@@ -34,6 +34,10 @@
         directives: { TransferDom },
         mixins: [Popper],
         props: {
+            piParentNodeFn: {
+                type: Function,
+                default: () => undefined
+            },
             placement: {
                 validator (value) {
                     return oneOf(value, ['top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end', 'right', 'right-start', 'right-end']);

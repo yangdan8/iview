@@ -34,7 +34,7 @@
         </div>
         <transition name="transition-drop">
             <Drop
-                v-transfer-dom
+                v-transfer-dom="{value:value,rootNode:piParentNodeFn()}"
                 v-show="visible"
                 ref="drop"
                 :placement="placement"
@@ -142,6 +142,10 @@ export default {
     mixins: [Emitter, Locale, Prefixes],
 
     props: {
+        piParentNodeFn: {
+            type: Function,
+            default: () => undefined
+        },
         value: {
             type: String,
             default: undefined,

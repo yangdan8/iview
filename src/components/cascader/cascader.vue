@@ -27,7 +27,7 @@
                 ref="drop"
                 :data-transfer="transfer"
                 :transfer="transfer"
-                v-transfer-dom>
+                v-transfer-dom="{value:value,rootNode:piParentNodeFn()}">
                 <div>
                     <Caspanel
                         v-show="!filterable || (filterable && query === '')"
@@ -74,6 +74,10 @@
         components: { iInput, Drop, Icon, Caspanel },
         directives: { clickOutside, TransferDom },
         props: {
+            piParentNodeFn: {
+                type: Function,
+                default: () => undefined
+            },
             data: {
                 type: Array,
                 default () {

@@ -40,7 +40,7 @@
                 ref="drop"
                 :data-transfer="transfer"
                 :transfer="transfer"
-                v-transfer-dom>
+                v-transfer-dom="{value:value,rootNode:piParentNodeFn()}">
                 <div>
                     <component
                         :is="panel"
@@ -124,6 +124,10 @@
         components: { iInput, Drop, Icon },
         directives: { clickOutside, TransferDom },
         props: {
+            piParentNodeFn: {
+                type: Function,
+                default: () => undefined
+            },
             format: {
                 type: String
             },
