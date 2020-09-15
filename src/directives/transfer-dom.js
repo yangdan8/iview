@@ -53,7 +53,7 @@ const directive = {
         const ref$1 = el.__transferDomData;
         if (!ref$1) return;
         let rootNode = undefined;
-        if (typeof rootNode === 'object') {
+        if (typeof value === 'object') {
             value = value.value;
             rootNode = value.rootNode;
         }
