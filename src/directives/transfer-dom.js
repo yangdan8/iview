@@ -26,7 +26,7 @@ const directive = {
         const parentNode = el.parentNode;
         if (!parentNode) return;
         let rootNode = undefined;
-        if (typeof rootNode === 'object') {
+        if (typeof value === 'object') {
             value = value.value;
             rootNode = value.rootNode;
         }

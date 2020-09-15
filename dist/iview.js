@@ -1631,7 +1631,7 @@ var directive = {
         var parentNode = el.parentNode;
         if (!parentNode) return;
         var rootNode = undefined;
-        if ((typeof rootNode === 'undefined' ? 'undefined' : (0, _typeof3.default)(rootNode)) === 'object') {
+        if ((typeof value === 'undefined' ? 'undefined' : (0, _typeof3.default)(value)) === 'object') {
             value = value.value;
             rootNode = value.rootNode;
         }
@@ -29271,7 +29271,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '3.5.5-pi.28',
+    version: '3.5.5-pi.29',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
