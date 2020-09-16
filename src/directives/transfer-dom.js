@@ -27,8 +27,8 @@ const directive = {
         if (!parentNode) return;
         let rootNode = undefined;
         if (typeof value === 'object') {
-            value = value.value;
             rootNode = value.rootNode;
+            value = value.value;
         }
         const home = document.createComment('');
         let hasMovedOut = false;
@@ -54,8 +54,8 @@ const directive = {
         if (!ref$1) return;
         let rootNode = undefined;
         if (typeof value === 'object') {
-            value = value.value;
             rootNode = value.rootNode;
+            value = value.value;
         }
         // homes.get(el)
         const parentNode = ref$1.parentNode;

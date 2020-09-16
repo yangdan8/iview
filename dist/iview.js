@@ -1632,8 +1632,8 @@ var directive = {
         if (!parentNode) return;
         var rootNode = undefined;
         if ((typeof value === 'undefined' ? 'undefined' : (0, _typeof3.default)(value)) === 'object') {
-            value = value.value;
             rootNode = value.rootNode;
+            value = value.value;
         }
         var home = document.createComment('');
         var hasMovedOut = false;
@@ -1661,8 +1661,8 @@ var directive = {
         if (!ref$1) return;
         var rootNode = undefined;
         if ((typeof value === 'undefined' ? 'undefined' : (0, _typeof3.default)(value)) === 'object') {
-            value = value.value;
             rootNode = value.rootNode;
+            value = value.value;
         }
 
         var parentNode = ref$1.parentNode;
