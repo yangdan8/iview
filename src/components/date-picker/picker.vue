@@ -40,7 +40,7 @@
                 ref="drop"
                 :data-transfer="transfer"
                 :transfer="transfer"
-                v-transfer-dom="{value:value,rootNode:piParentNodeFn()}">
+                v-transfer-dom="{rootNode:piParentNodeFn()}">
                 <div>
                     <component
                         :is="panel"

@@ -12,7 +12,7 @@
                 @mouseenter="handleShowPopper"
                 @mouseleave="handleClosePopper"
                 :data-transfer="transfer"
-                v-transfer-dom="{value:value,rootNode:piParentNodeFn()}">
+                v-transfer-dom="{rootNode:piParentNodeFn()}">
                 <div :class="[prefixCls + '-content']">
                     <div :class="[prefixCls + '-arrow']"></div>
                     <div :class="innerClasses" :style="innerStyles"><slot name="content">{{ content }}</slot></div>

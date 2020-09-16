@@ -34,7 +34,7 @@
         </div>
         <transition name="transition-drop">
             <Drop
-                v-transfer-dom="{value:value,rootNode:piParentNodeFn()}"
+                v-transfer-dom="{rootNode:piParentNodeFn()}"
                 v-show="visible"
                 ref="drop"
                 :placement="placement"

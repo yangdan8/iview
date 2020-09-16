@@ -61,7 +61,7 @@
                 ref="dropdown"
                 :data-transfer="transfer"
                 :transfer="transfer"
-                v-transfer-dom="{value:value,rootNode:piParentNodeFn()}"
+                v-transfer-dom="{rootNode:piParentNodeFn()}"
             >
                 <ul v-show="showNotFoundLabel && !$slots.empty" :class="[prefixCls + '-not-found']"><li>{{ localeNotFoundText }}</li></ul>
                 <!--feature #5327-->

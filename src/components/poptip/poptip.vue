@@ -22,7 +22,7 @@
                 @mouseenter="handleMouseenter"
                 @mouseleave="handleMouseleave"
                 :data-transfer="transfer"
-                v-transfer-dom="{value:value,rootNode:piParentNodeFn()}">
+                v-transfer-dom="{rootNode:piParentNodeFn()}">
                 <div :class="[prefixCls + '-content']">
                     <div :class="[prefixCls + '-arrow']"></div>
                     <div :class="[prefixCls + '-inner']" v-if="confirm">

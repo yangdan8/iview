@@ -27,7 +27,7 @@
                 ref="drop"
                 :data-transfer="transfer"
                 :transfer="transfer"
-                v-transfer-dom="{value:value,rootNode:piParentNodeFn()}">
+                v-transfer-dom="{rootNode:piParentNodeFn()}">
                 <div>
                     <Caspanel
                         v-show="!filterable || (filterable && query === '')"

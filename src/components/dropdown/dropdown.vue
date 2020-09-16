@@ -15,7 +15,7 @@
                 @mouseleave.native="handleMouseleave"
                 :data-transfer="transfer"
                 :transfer="transfer"
-                v-transfer-dom="{value:visible,rootNode:piParentNodeFn()}"><slot name="list"></slot></Drop>
+                v-transfer-dom="{rootNode:piParentNodeFn()}"><slot name="list"></slot></Drop>
         </transition>
     </div>
 </template>
