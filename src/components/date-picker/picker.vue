@@ -374,9 +374,13 @@
                 }
 
                 if (e && e.type === 'mousedown' && this.visible) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return;
+                    const ele = this.$el;
+                    let rootNode = ele.getRootNode();
+                    if (rootNode === document || rootNode === ele) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return;
+                    }
                 }
 
                 if (this.visible) {

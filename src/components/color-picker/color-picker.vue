@@ -416,8 +416,12 @@ export default {
         handleClose(event) {
             if (this.visible) {
                 if (this.dragging || event.type === 'mousedown') {
-                    event.preventDefault();
-                    return;
+                    const ele = this.$el;
+                    let rootNode = ele.getRootNode();
+                    if (rootNode === document || rootNode === ele) {
+                        event.preventDefault();
+                        return;
+                    }
                 }
 
                 if (this.transfer) {
