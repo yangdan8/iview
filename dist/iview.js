@@ -5633,7 +5633,7 @@ exports.default = {
                 if (event.type === 'mousedown') {
                     var ele = this.$el;
                     var rootNode = ele.getRootNode();
-                    if (rootNode !== document && rootNode !== ele) {
+                    if (rootNode === document || rootNode === ele) {
                         event.preventDefault();
                         return;
                     }

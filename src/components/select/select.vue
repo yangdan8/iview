@@ -543,7 +543,7 @@
                     if (event.type === 'mousedown') {
                         const ele = this.$el;
                         let rootNode = ele.getRootNode();
-                        if(rootNode !== document && rootNode !== ele) {
+                        if(rootNode === document || rootNode === ele) {
                             event.preventDefault();
                             return;
                         }
