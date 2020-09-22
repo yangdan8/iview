@@ -541,8 +541,12 @@
             onClickOutside(event){
                 if (this.visible) {
                     if (event.type === 'mousedown') {
-                        event.preventDefault();
-                        return;
+                        const ele = this.$el;
+                        let rootNode = ele.getRootNode();
+                        if(rootNode !== document && rootNode !== ele) {
+                            event.preventDefault();
+                            return;
+                        }
                     }
 
                     if (this.transfer) {
@@ -570,6 +574,7 @@
                 } else {
                     this.caretPosition = -1;
                     this.isFocused = false;
+                    this.$emit('on-clickoutside', event);
                 }
             },
             reset(){
