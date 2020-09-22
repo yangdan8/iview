@@ -367,30 +367,34 @@
             handleTransferClick () {
                 if (this.transfer) this.disableCloseUnderTransfer = true;
             },
-            handleClose (e) {
+            handleClose (event) {
                 if (this.disableCloseUnderTransfer) {
                     this.disableCloseUnderTransfer = false;
                     return false;
                 }
 
-                if (e && e.type === 'mousedown' && this.visible) {
+                if (event && event.type === 'mousedown' && this.visible) {
                     const ele = this.$el;
                     let rootNode = ele.getRootNode();
-                    if (rootNode === document || rootNode === ele) {
-                        e.preventDefault();
-                        e.stopPropagation();
+                    if (rootNode !== document && rootNode !== ele) {
+                        event.preventDefault();
+                        event.stopPropagation();
                         return;
                     }
                 }
 
                 if (this.visible) {
+                    let { target } = event;
+                    if (target.shadowRoot && event.path && event.path[0]) {
+                        target = event.path[0];
+                    }
                     const pickerPanel = this.$refs.pickerPanel && this.$refs.pickerPanel.$el;
-                    if (e && pickerPanel && pickerPanel.contains(e.target)) return; // its a click inside own component, lets ignore it.
+                    if (event && pickerPanel && pickerPanel.contains(target)) return; // its a click inside own component, lets ignore it.
 
                     this.visible = false;
-                    e && e.preventDefault();
-                    e && e.stopPropagation();
-                    this.$emit('on-clickoutside', e);
+                    event && event.preventDefault();
+                    event && event.stopPropagation();
+                    this.$emit('on-clickoutside', event);
                     return;
                 }
 

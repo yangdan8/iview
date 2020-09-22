@@ -550,8 +550,12 @@
                     }
 
                     if (this.transfer) {
-                        const {$el} = this.$refs.dropdown;
-                        if ($el === event.target || $el.contains(event.target)) {
+                        let { target } = event;
+                        if (target.shadowRoot && event.path && event.path[0]) {
+                            target = event.path[0];
+                        }
+                        const { $el } = this.$refs.dropdown;
+                        if ($el === target || $el.contains(target)) {
                             return;
                         }
                     }

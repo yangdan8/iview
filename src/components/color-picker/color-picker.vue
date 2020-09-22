@@ -425,8 +425,12 @@ export default {
                 }
 
                 if (this.transfer) {
+                    let { target } = event;
+                    if (target.shadowRoot && event.path && event.path[0]) {
+                        target = event.path[0];
+                    }
                     const {$el} = this.$refs.drop;
-                    if ($el === event.target || $el.contains(event.target)) {
+                    if ($el === event.target || $el.contains(target)) {
                         return;
                     }
                 }
