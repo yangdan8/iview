@@ -7214,10 +7214,10 @@ pluralize@^1.2.1:
   resolved "http://10.0.110.61:8081/repository/pilot-all/pluralize/-/pluralize-1.2.1.tgz#d1a21483fd22bb41e58a12fa3421823140897c45"
   integrity sha1-0aIUg/0iu0HlihL6NCGCMUCJfEU=
 
-popper.js@1.16.2-pi.1:
-  version "1.16.2-pi.1"
-  resolved "http://10.0.110.61:8081/repository/pilot-all/popper.js/-/popper.js-1.16.2-pi.1.tgz#a44d4e11e95197faa8c0c691fc63fc61ef113a18"
-  integrity sha512-IJ7RpER4YrKTwhuMSVlra91aKeyjIawUul2uSfPPwkbuyng5hTKEHLp1wuwPOk2slBF6Gc08prJ5IJydTaxKhQ==
+popper.js@1.16.2-pi.2:
+  version "1.16.2-pi.2"
+  resolved "http://10.0.110.61:8081/repository/pilot-all/popper.js/-/popper.js-1.16.2-pi.2.tgz#3fb97b077a4f8acc9a799f795f463f54e95e9d6e"
+  integrity sha512-+zeUT8loDeZzjH91RwVaGv5nA25GwdtZgcRmVQkoWPo3DRHYyLRo5VxRLObFzPv7ojenaqMNLG8iJD8ieuI0FQ==
 
 portfinder@^1.0.9:
   version "1.0.28"

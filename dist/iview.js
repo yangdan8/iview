@@ -7386,8 +7386,9 @@ function applyStyle(data) {
   }
 
   // shadowDom下重新计算定位
-  if (data.instance.popper.parentNode instanceof ShadowRoot) {
-    var popper = data.instance.popper;
+  var popper = data.instance.popper;
+
+  if (popper.parentNode instanceof ShadowRoot) {
     var _ref = [parseFloat(popper.style.left), parseFloat(popper.style.top)],
         left = _ref[0],
         top = _ref[1];
@@ -7399,7 +7400,7 @@ function applyStyle(data) {
       var _rootNode = rootNode,
           host = _rootNode.host;
 
-      var hostRect = window.getBoundingClientRect(host);
+      var hostRect = host.getBoundingClientRect();
       top -= hostRect.top - 6;
       left -= hostRect.left - 6;
       rootNode = host.getRootNode();
@@ -29313,7 +29314,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '3.5.5-pi.33',
+    version: '3.5.5-pi.35',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,
