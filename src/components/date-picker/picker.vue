@@ -801,6 +801,8 @@
                 this.$emit('input', this.publicVModelValue); // to update v-model
             }
             if (this.open !== null) this.visible = this.open;
+            //修复open模式下其他组件首次点击无效的问题,由于clickOutside导致
+            if (this.open) this.visible = false;
 
             // to handle focus from confirm buttons
             this.$on('focus-input', () => this.focus());
