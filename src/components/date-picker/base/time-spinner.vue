@@ -197,7 +197,9 @@
             updateScroll () {
                 this.$nextTick(() => {
                     timeParts.forEach(type => {
-                        this.$refs[type].scrollTop = 24 * this[`${type}List`].findIndex(obj => obj.text == this[type]);
+                        if(this.$refs[type]){
+                            this.$refs[type].scrollTop = 24 * this[`${type}List`].findIndex(obj => obj.text == this[type]);
+                        }
                     });
                 });
             },
