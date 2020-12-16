@@ -6198,7 +6198,7 @@ var Popper = isServer ? function () {} : __webpack_require__(106);exports.defaul
 
 /* WEBPACK VAR INJECTION */(function(global) {/**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
- * @version 1.16.2-pi.1
+ * @version 1.16.2-pi.3
  * @license
  * Copyright (c) 2016 Federico Zivolo and contributors
  *
@@ -7406,8 +7406,8 @@ function applyStyle(data) {
           host = _rootNode.host;
 
       var hostRect = host.getBoundingClientRect();
-      top -= hostRect.top - 6;
-      left -= hostRect.left - 6;
+      top -= hostRect.top;
+      left -= hostRect.left;
       rootNode = host.getRootNode();
     }
     isInShadow && setStyles(popper, {
@@ -29341,7 +29341,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var API = (0, _extends3.default)({
-    version: '3.5.5-pi.40',
+    version: '3.5.5-pi.41',
     locale: _index2.default.use,
     i18n: _index2.default.i18n,
     install: install,

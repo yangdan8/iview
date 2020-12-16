@@ -1,6 +1,6 @@
 {
     "name": "iview",
-    "version": "3.5.5-pi.40",
+    "version": "3.5.5-pi.41",
     "publishConfig": {
         "registry": "http://10.0.110.61:8081/repository/pilot-hosted/"
     },
@@ -52,7 +52,7 @@
         "element-resize-detector": "^1.2.0",
         "js-calendar": "^1.2.3",
         "lodash.throttle": "^4.1.1",
-        "popper.js": "1.16.2-pi.2",
+        "popper.js": "1.16.2-pi.3",
         "tinycolor2": "^1.4.1",
         "v-click-outside-x": "4.1.1-pi.1"
     },
